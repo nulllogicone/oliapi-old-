@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OliApi", "OliApi\OliApi.csproj", "{33A0363A-13DA-4D70-B6FF-6512300D9D9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OliApi.Tests", "OliApi.Tests\OliApi.Tests.csproj", "{EE5E64C7-C103-4B7E-8E55-CF2218F6D1E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{38EF8FCD-968F-4537-A048-7A579C89861C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6C6DD21A-2A09-4452-8AE8-2F382CCF120D}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{81BFFD38-2F2D-4772-9905-D449384A15D0}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\OliApi.json = PublishScripts\Templates\OliApi.json
+		PublishScripts\Templates\OliApi.param.dev.json = PublishScripts\Templates\OliApi.param.dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33A0363A-13DA-4D70-B6FF-6512300D9D9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A0363A-13DA-4D70-B6FF-6512300D9D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A0363A-13DA-4D70-B6FF-6512300D9D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A0363A-13DA-4D70-B6FF-6512300D9D9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5E64C7-C103-4B7E-8E55-CF2218F6D1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5E64C7-C103-4B7E-8E55-CF2218F6D1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5E64C7-C103-4B7E-8E55-CF2218F6D1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5E64C7-C103-4B7E-8E55-CF2218F6D1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C6DD21A-2A09-4452-8AE8-2F382CCF120D} = {38EF8FCD-968F-4537-A048-7A579C89861C}
+		{81BFFD38-2F2D-4772-9905-D449384A15D0} = {38EF8FCD-968F-4537-A048-7A579C89861C}
+	EndGlobalSection
+EndGlobal
