@@ -13,20 +13,20 @@
     <div class="col-md-6">
         <h3>PostIt</h3>
         <h3>Die Nachrichten</h3>
-        <ul>
+        <ul class="list-group">
             @foreach (var p in Model.PostIts)
             {
-                <li>@p.Titel</li>
+                <li class="list-group-item">@p.Titel</li>
             }
         </ul>
     </div>
     <div class="col-md-6">
         <h3>TopLab</h3>
         <h4>Die Antworten.</h4>
-        <ul>
+        <ul class="list-group">
             @foreach (var t in Model.TopLabs)
             {
-                <li>@t.Titel</li>
+                <li class="list-group-item">@t.Titel</li>
             }
         </ul>
     </div>
