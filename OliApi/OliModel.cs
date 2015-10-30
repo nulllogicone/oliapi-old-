@@ -45,8 +45,8 @@ namespace OliApi
                 .IsUnicode(false);
 
             modelBuilder.Entity<TopLab>()
-                .HasMany(e => e.TopLab11)
-                .WithOptional(e => e.TopLab2)
+                .HasMany(e => e.TopLabChildren)
+                .WithOptional(e => e.TopLabParent)
                 .HasForeignKey(e => e.TopTopLabGuid);
         }
     }
