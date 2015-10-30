@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OliApi.Models;
 
 namespace OliApi.Controllers
 {
@@ -11,13 +12,15 @@ namespace OliApi.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
+            var oim = new OliIndexModel();
             using (var db = new OliModel())
             {
                 var ps = db.PostIt.OrderByDescending(p=>p.Datum).Take(5).ToList();
-                return View(ps);
-
+                var ts = db.TopLab.OrderByDescending(t => t.Datum).Take(5).ToList();
+                oim.PostIts = ps;
+                oim.TopLabs = ts;
+                return View(oim);
             }
-
         }
     }
 }
