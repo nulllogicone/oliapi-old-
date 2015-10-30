@@ -1,4 +1,6 @@
-﻿<div class="jumbotron">
+﻿@model List<OliApi.PostIt>
+
+<div class="jumbotron">
     <h1>OLI-it API</h1>
     <p class="lead">
         Intelligent message matching and delivering system.
@@ -10,7 +12,12 @@
     <h2>OLIx</h2>
     <div class="col-md-6">
         <h3>PostIt</h3>
-        sdfasdf
+        <ul>
+            @foreach (var p in Model)
+            {
+                <li>@p.Titel</li>
+            }
+        </ul>
     </div>
     <div class="col-md-6">
         <h3>TopLab</h3>
