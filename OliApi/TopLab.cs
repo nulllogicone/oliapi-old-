@@ -12,7 +12,7 @@ namespace OliApi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TopLab()
         {
-            TopLab11 = new HashSet<TopLab>();
+            TopLabChildren = new HashSet<TopLab>();
         }
 
         [Key]
@@ -28,7 +28,7 @@ namespace OliApi
         [Column("TopLab")]
         [Required]
         [StringLength(3000)]
-        public string TopLab1 { get; set; }
+        public string TopLabText { get; set; }
 
         [StringLength(255)]
         public string URL { get; set; }
@@ -50,8 +50,8 @@ namespace OliApi
         public virtual PostIt PostIt { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TopLab> TopLab11 { get; set; }
+        public virtual ICollection<TopLab> TopLabChildren { get; set; }
 
-        public virtual TopLab TopLab2 { get; set; }
+        public virtual TopLab TopLabParent { get; set; }
     }
 }
