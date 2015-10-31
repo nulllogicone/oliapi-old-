@@ -9,6 +9,5 @@ namespace OliApi.Models
     {
         public List<PostIt> PostIts;
         public List<TopLab> TopLabs;
-    
     }
 }
