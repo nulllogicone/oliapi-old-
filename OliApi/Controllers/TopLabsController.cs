@@ -20,7 +20,8 @@ namespace OliApi.Controllers
         // GET: api/TopLabs
         public IQueryable<TopLab> GetTopLab()
         {
-            return db.TopLab.OrderByDescending(t=>t.Datum).Take(10);
+            var ts = db.TopLab.OrderByDescending(t => t.Datum).Take(10);
+            return ts;
         }
 
         // GET: api/TopLabs/5

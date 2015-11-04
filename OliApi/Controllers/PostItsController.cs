@@ -20,7 +20,8 @@ namespace OliApi.Controllers
         // GET: api/PostIts
         public IQueryable<PostIt> GetPostIt()
         {
-            return db.PostIt.OrderByDescending(p=>p.Datum).Take(10);
+            var ps = db.PostIt.OrderByDescending(p => p.Datum).Take(10);
+            return ps;
         }
 
         // GET: api/PostIts/5
