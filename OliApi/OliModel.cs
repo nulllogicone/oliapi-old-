@@ -1,3 +1,5 @@
+using System.Data.Common;
+
 namespace OliApi
 {
     using System;
@@ -9,6 +11,11 @@ namespace OliApi
     {
         public OliModel()
             : base("name=OliModel")
+        {
+        }
+
+        public OliModel(DbConnection connection)
+            : base(connection, true)
         {
         }
 

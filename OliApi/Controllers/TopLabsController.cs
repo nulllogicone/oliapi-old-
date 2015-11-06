@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OliApi;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace OliApi.Controllers
 {
