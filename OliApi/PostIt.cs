@@ -12,7 +12,7 @@ namespace OliApi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PostIt()
         {
-            TopLab = new HashSet<TopLab>();
+            //TopLab = new HashSet<TopLab>();
         }
 
         [Key]
@@ -28,8 +28,8 @@ namespace OliApi
 
         public DateTime Datum { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal KooK { get; set; }
+        //[Column(TypeName = "money")]
+        public double KooK { get; set; }
 
         public int? PostItZust { get; set; }
 
@@ -45,7 +45,7 @@ namespace OliApi
         [StringLength(3)]
         public string Typ { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TopLab> TopLab { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<TopLab> TopLab { get; set; }
     }
 }

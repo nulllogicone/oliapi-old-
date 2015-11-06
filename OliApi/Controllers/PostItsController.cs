@@ -13,7 +13,7 @@ namespace OliApi.Controllers
 {
     public class PostItsController : ApiController
     {
-        private readonly OliModel db = new OliModel();
+        //private readonly OliModel db = new OliModel(DbConnectionFactory.CreateTransient());
 
         // GET: api/PostIts
         //public async Task<IList> GetPostIt()
@@ -34,18 +34,33 @@ namespace OliApi.Controllers
 
         // GET: api/PostIts/5
         [ResponseType(typeof (PostIt))]
-        public async Task<IHttpActionResult> GetPostIt(Guid id)
+        public IHttpActionResult GetPostIt(Guid id)
         {
-            var connection = DbConnectionFactory.CreateTransient();
-
-            var context = new OliModel(connection);
-            var postit = new PostIt();
-            postit.Titel = "My title";
-            postit.PostItGuid = new Guid("e8c4809c-851b-4819-a727-0b987b4fb45f");
-            context.PostIt.Add(postit);
-
-            var x = await context.PostIt.FindAsync(id);
-            return Ok(x);
+            var context = new PeopleDbContext(DbConnectionFactory.CreateTransient());
+            try
+            {
+                context.People.Add(new Person() { Id = 1, Name = "John Doe" });
+                context.People.Add(new Person() { Id = 2, Name = "Jane Doe" });
+                context.PostIt.Add(new PostIt
+                {
+                    PostItGuid = new Guid("e8c4809c-851b-4819-a727-0b987b4fb45f"),
+                    Titel = "XXX",
+                    Datum = DateTime.Now,
+                    //KooK = 123.99,
+                    Hits = 12,
+                    URL = "http://localhost",
+                    PostItZust = 1,
+                    Typ = "txt",
+                    PostIt1 = "XXX"
+                });
+                context.SaveChanges();
+                var result = context.PostIt.ToList();
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
             //PostIt postIt = await db.PostIt.FindAsync(id);
             //if (postIt == null)
             //{
@@ -56,92 +71,92 @@ namespace OliApi.Controllers
         }
 
         // PUT: api/PostIts/5
-        [ResponseType(typeof (void))]
-        public async Task<IHttpActionResult> PutPostIt(Guid id, PostIt postIt)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof (void))]
+        //public async Task<IHttpActionResult> PutPostIt(Guid id, PostIt postIt)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != postIt.PostItGuid)
-            {
-                return BadRequest();
-            }
+        //    if (id != postIt.PostItGuid)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(postIt).State = EntityState.Modified;
+        //    db.Entry(postIt).State = EntityState.Modified;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PostItExists(id))
-                {
-                    return NotFound();
-                }
-                throw;
-            }
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PostItExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        throw;
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-        // POST: api/PostIts
-        [ResponseType(typeof (PostIt))]
-        public async Task<IHttpActionResult> PostPostIt(PostIt postIt)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/PostIts
+        //[ResponseType(typeof (PostIt))]
+        //public async Task<IHttpActionResult> PostPostIt(PostIt postIt)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.PostIt.Add(postIt);
+        //    db.PostIt.Add(postIt);
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (PostItExists(postIt.PostItGuid))
-                {
-                    return Conflict();
-                }
-                throw;
-            }
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (PostItExists(postIt.PostItGuid))
+        //        {
+        //            return Conflict();
+        //        }
+        //        throw;
+        //    }
 
-            return CreatedAtRoute("DefaultApi", new {id = postIt.PostItGuid}, postIt);
-        }
+        //    return CreatedAtRoute("DefaultApi", new {id = postIt.PostItGuid}, postIt);
+        //}
 
         // DELETE: api/PostIts/5
-        [ResponseType(typeof (PostIt))]
-        public async Task<IHttpActionResult> DeletePostIt(Guid id)
-        {
-            var postIt = await db.PostIt.FindAsync(id);
-            if (postIt == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof (PostIt))]
+        //public async Task<IHttpActionResult> DeletePostIt(Guid id)
+        //{
+        //    var postIt = await db.PostIt.FindAsync(id);
+        //    if (postIt == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.PostIt.Remove(postIt);
-            await db.SaveChangesAsync();
+        //    db.PostIt.Remove(postIt);
+        //    await db.SaveChangesAsync();
 
-            return Ok(postIt);
-        }
+        //    return Ok(postIt);
+        //}
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool PostItExists(Guid id)
-        {
-            return db.PostIt.Count(e => e.PostItGuid == id) > 0;
-        }
+        //private bool PostItExists(Guid id)
+        //{
+        //    //return db.PostIt.Count(e => e.PostItGuid == id) > 0;
+        //}
     }
 }
