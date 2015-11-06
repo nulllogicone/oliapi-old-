@@ -34,7 +34,7 @@ namespace OliApi.Controllers
 
         // GET: api/PostIts/5
         [ResponseType(typeof (PostIt))]
-        public IHttpActionResult GetPostIt(Guid id)
+        public PostIt GetPostIt(Guid id)
         {
             var context = new PeopleDbContext(DbConnectionFactory.CreateTransient());
             try
@@ -45,7 +45,7 @@ namespace OliApi.Controllers
                 {
                     PostItGuid = new Guid("e8c4809c-851b-4819-a727-0b987b4fb45f"),
                     Titel = "XXX",
-                    Datum = DateTime.Now,
+                    Datum = new DateTime(2015, 11, 06, 0, 0, 0),
                     //KooK = 123.99,
                     Hits = 12,
                     URL = "http://localhost",
@@ -54,12 +54,12 @@ namespace OliApi.Controllers
                     PostIt1 = "XXX"
                 });
                 context.SaveChanges();
-                var result = context.PostIt.ToList();
-                return Ok(result);
+                var result = context.PostIt.Find(new Guid("e8c4809c-851b-4819-a727-0b987b4fb45f"));
+                return result;
             }
             catch (Exception e)
             {
-                return InternalServerError(e);
+                throw;
             }
             //PostIt postIt = await db.PostIt.FindAsync(id);
             //if (postIt == null)
