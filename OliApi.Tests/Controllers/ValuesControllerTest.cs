@@ -18,16 +18,11 @@ namespace OliApi.Tests.Controllers
         {
             // Arrange
             ValuesController controller = new ValuesController();
-            //var expectedResult = new PostIt
-            //{
-            //    Datei = ""
-            //};
 
             // Act
-            var result = controller.Get();
+            IEnumerable<string> result = controller.Get();
 
             // Assert
-            //Assert.AreEqual(expectedResult, result);
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count());
             Assert.AreEqual("value1", result.ElementAt(0));
