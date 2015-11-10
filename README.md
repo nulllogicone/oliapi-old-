@@ -1,6 +1,6 @@
 # OLI-it API
 
-REST services for SAPCT
+REST services for the OLI-it entities: SAPCT
 
 ## GitHub
 This project is open source and can be forked on GitHub, all pull requests are welcome
