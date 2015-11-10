@@ -17,7 +17,10 @@
         <ul class="list-group">
             @foreach (var p in Model.PostIts)
             {
-                <li class="list-group-item">@p.Titel</li>
+                <li class="list-group-item">
+                    <a href='@($"http://www.oli-it.com/P/{@p.PostItGuid}.aspx")'>@p.Titel</a><br/>
+                    <p>@Html.Raw(p.PostIt1)</p>
+                </li>
             }
         </ul>
     </div>
@@ -27,7 +30,10 @@
         <ul class="list-group">
             @foreach (var t in Model.TopLabs)
             {
-                <li class="list-group-item">@t.Titel</li>
+                <li class="list-group-item">
+                    <a href='@($"http://www.oli-it.com/T/{@t.TopLabGuid}.aspx")'>@t.Titel</a><br />
+                    @t.Titel
+                </li>
             }
         </ul>
     </div>
